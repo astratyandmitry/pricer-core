@@ -11,13 +11,12 @@ class CreateQueriesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('queries', function (Blueprint $table) {
+        Schema::create('queries', function (Blueprint $table): void {
             $table->id();
-            $table->string('value', 255);
-            $table->string('results_url', 1000);
-            $table->boolean('active')->default(true)->index();
+            $table->string('title', 255);
+            $table->string('url', 1000);
             $table->timestamps();
         });
     }
@@ -27,7 +26,7 @@ class CreateQueriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('queries');
     }
