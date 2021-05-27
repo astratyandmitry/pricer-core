@@ -13,7 +13,7 @@ class SubscriptionListController extends Controller
     public function __invoke(): View
     {
         return view('subscription.list', [
-            'subscriptions' => Subscription::query()->with('latest_update')->get(),
+            'subscriptions' => Subscription::query()->with('latest_update', 'marketplace')->get(),
         ]);
     }
 }

@@ -48,4 +48,28 @@ class Advert extends Model
     {
         return $this->hasOne(AdvertUpdate::class)->latest();
     }
+
+    /**
+     * @return array
+     */
+    public function graphLabels(): array
+    {
+        return $this->updates
+            ->reverse()->take(30)
+            ->map(function (AdvertUpdate $update) {
+                return $update->created_at->format('d.m.Y');
+            })->values()->toArray();
+    }
+
+    /**
+     * @return array
+     */
+    public function graphData(): array
+    {
+        return $this->updates
+            ->reverse()->take(30)
+            ->map(function (AdvertUpdate $update) {
+                return $update->price;
+            })->values()->toArray();
+    }
 }

@@ -13,6 +13,8 @@ class AdvertDetailController extends Controller
      */
     public function __invoke(Advert $advert): View
     {
+        $advert->load('updates', 'latest_update');
+
         return view('advert.detail', [
             'advert' => $advert,
         ]);

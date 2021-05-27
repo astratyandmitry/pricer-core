@@ -18,21 +18,22 @@
         </a>
       </div>
     </div>
-
-    @if (session()->has('sync'))
-      <div class="bg-green-200 text-green-700 text-xs font-medium px-4 py-2 rounded-full">
-        Только что обновлено
-      </div>
-    @else
-      <a href="{{ route('advert.sync', $advert) }}"
-         class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-medium px-4 py-2 rounded transition">
-        Обновить данные
-      </a>
-    @endif
   </div>
+
+  @if ($advert->updates->count() > 1)
+    <div class="p-6 bg-white shadow-md rounded-md mb-12">
+      <canvas id="myChart" width="100%" height="30vh"></canvas>
+    </div>
+  @endif
 
   @if($advert->updates->isNotEmpty())
     <div id="items">
+      <div class="text-2xl font-medium flex items-center">
+        <div>
+          Последние 100 обновлений
+        </div>
+      </div>
+
       <table border="0" cellpadding="0" cellspacing="0"
              class="w-full mt-6 bg-white shadow-md rounded-md p-6 overflow-hidden">
         <tr class="bg-gray-500">
@@ -49,7 +50,7 @@
             Передыдущая
           </th>
         </tr>
-        @foreach($advert->updates as $update)
+        @foreach($advert->updates->take(100) as $update)
           <tr class="border-t border-gray-100 hover:bg-gray-50 transition">
             <td class="p-4">
               {{ $update->created_at->format('d.m.Y H:i') }}
@@ -79,5 +80,26 @@
         @endforeach
       </table>
     </div>
+  @endif
+
+  @if ($advert->updates->count() > 1)
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.0/chart.min.js"
+            integrity="sha512-yadYcDSJyQExcKhjKSQOkBKy2BLDoW6WnnGXCAkCoRlpHGpYuVuBqGObf3g/TdB86sSbss1AOP4YlGSb6EKQPg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      var ctx = document.getElementById('myChart')
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: @json($advert->updates->map(function(\App\Models\AdvertUpdate $update) { return $update->created_at->format('d.m.Y'); })),
+          datasets: [{
+            data: @json($advert->updates->map(function(\App\Models\AdvertUpdate $update) { return $update->price; })),
+            borderWidth: 2,
+            borderColor: '#2563EB',
+            label: '{{ $advert->title }}',
+          }]
+        },
+      })
+    </script>
   @endif
 @endsection

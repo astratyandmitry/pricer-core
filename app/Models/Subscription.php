@@ -53,4 +53,29 @@ class Subscription extends Model
     {
         return $this->hasOne(SubscriptionUpdate::class)->latest();
     }
+
+    /**
+     * @return array
+     */
+    public function graphLabels(): array
+    {
+        return $this->updates
+            ->reverse()->take(30)
+            ->map(function (SubscriptionUpdate $update) {
+                return $update->created_at->format('d.m.Y');
+            })->values()->toArray();
+    }
+
+    /**
+     * @param string $attribute
+     * @return array
+     */
+    public function graphData(string $attribute): array
+    {
+        return $this->updates
+            ->reverse()->take(30)
+            ->map(function (SubscriptionUpdate $update) use ($attribute) {
+                return $update->getAttribute($attribute);
+            })->values()->toArray();
+    }
 }
