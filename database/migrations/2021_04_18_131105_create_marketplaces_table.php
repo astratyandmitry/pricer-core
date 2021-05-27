@@ -4,19 +4,19 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertToQueriesTable extends Migration
+class CreateMarketplacesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('advert_to_queries', function (Blueprint $table) {
+        Schema::create('marketplaces', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('advert_id')->unsigned();
-            $table->foreignId('query_id')->unsigned();
+            $table->string('key', 40)->unique()->index();
+            $table->string('title', 120)->unique();
             $table->timestamps();
         });
     }
@@ -26,8 +26,8 @@ class CreateAdvertToQueriesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('advert_to_queries');
+        Schema::dropIfExists('marketplaces');
     }
 }

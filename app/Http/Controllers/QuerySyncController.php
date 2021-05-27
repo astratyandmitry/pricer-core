@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Query;
+use App\Models\Subscription;
 use App\Jobs\InitialParseResultsPage;
 use Illuminate\Http\RedirectResponse;
 
 class QuerySyncController extends Controller
 {
     /**
-     * @param \App\Models\Query $query
+     * @param \App\Models\Subscription $query
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function __invoke(Query $query): RedirectResponse
+    public function __invoke(Subscription $query): RedirectResponse
     {
         InitialParseResultsPage::dispatch($query);
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertUpdatesTable extends Migration
+class CreateSubscriptionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateAdvertUpdatesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('advert_updates', function (Blueprint $table): void {
+        Schema::create('subscriptions', function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('advert_id')->constrained('adverts');
-            $table->unsignedDouble('price', 10, 2)->index();
+            $table->string('marketplace_key', 40)->index();
+            $table->string('title', 120);
+            $table->string('url', 1000);
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('marketplace_key')->references('key')->on('marketplaces');
         });
     }
 
@@ -28,6 +32,6 @@ class CreateAdvertUpdatesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('advert_updates');
+        Schema::dropIfExists('subscriptions');
     }
 }

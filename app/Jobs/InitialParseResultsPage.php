@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Advert;
-use App\Models\Query;
+use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -17,11 +17,11 @@ class InitialParseResultsPage implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
-     * @var \App\Models\Query
+     * @var \App\Models\Subscription
      */
     private $query;
 
-    public function __construct(Query $query)
+    public function __construct(Subscription $query)
     {
         $this->query = $query;
     }

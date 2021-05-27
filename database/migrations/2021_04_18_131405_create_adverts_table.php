@@ -11,14 +11,17 @@ class CreateAdvertsTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('adverts', function (Blueprint $table) {
+        Schema::create('adverts', function (Blueprint $table): void {
             $table->id();
-            $table->string('title', 255);
-            $table->string('url', 1000);
+            $table->string('marketplace_key', 40)->index();
+            $table->string('title', 500);
+            $table->string('url', 1000)->nullable();
             $table->unsignedDouble('price', 10, 2)->index();
             $table->timestamps();
+
+            $table->foreign('marketplace_key')->references('key')->on('marketplaces');
         });
     }
 
@@ -27,7 +30,7 @@ class CreateAdvertsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('adverts');
     }

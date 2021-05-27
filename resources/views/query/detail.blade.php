@@ -1,4 +1,4 @@
-@php /** @var \App\Models\Query $query */ @endphp
+@php /** @var \App\Models\Subscription $query */ @endphp
 
 @extends('layout.master')
 

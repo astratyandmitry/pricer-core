@@ -1,4 +1,4 @@
-@php /** @var \App\Models\Query[]|\Illuminate\Database\Eloquent\Collection $queries */ @endphp
+@php /** @var \App\Models\Subscription[]|\Illuminate\Database\Eloquent\Collection $queries */ @endphp
 
 @extends('layout.master')
 

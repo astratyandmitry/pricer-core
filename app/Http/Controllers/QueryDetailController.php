@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Query;
+use App\Models\Subscription;
 use Illuminate\View\View;
 
 class QueryDetailController extends Controller
 {
     /**
-     * @param \App\Models\Query $query
+     * @param \App\Models\Subscription $query
      * @return \Illuminate\View\View
      */
-    public function __invoke(Query $query): View
+    public function __invoke(Subscription $query): View
     {
         abort_unless($query->active, 403);
 

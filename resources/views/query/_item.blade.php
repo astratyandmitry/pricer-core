@@ -1,4 +1,4 @@
-@php /** @var \App\Models\Query $query */ @endphp
+@php /** @var \App\Models\Subscription $query */ @endphp
 
 <div class="bg-white shadow-md rounded-md">
   <div class="flex items-center justify-between p-6">

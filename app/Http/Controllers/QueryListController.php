@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Query;
+use App\Models\Subscription;
 use Illuminate\View\View;
 
 class QueryListController extends Controller
@@ -13,7 +13,7 @@ class QueryListController extends Controller
     public function __invoke(): View
     {
         return view('query.list', [
-            'queries' => Query::query()->where('active', true)->get(),
+            'queries' => Subscription::query()->where('active', true)->get(),
         ]);
     }
 }

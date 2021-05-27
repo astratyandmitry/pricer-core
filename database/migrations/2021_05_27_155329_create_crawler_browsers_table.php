@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQueriesTable extends Migration
+class CreateCrawlerBrowsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateQueriesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('queries', function (Blueprint $table): void {
+        Schema::create('crawler_browsers', function (Blueprint $table): void {
             $table->id();
-            $table->string('title', 255);
-            $table->string('url', 1000);
+            $table->string('type', 80)->index();
+            $table->string('useragent', 500)->index();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateQueriesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('queries');
+        Schema::dropIfExists('crawler_browsers');
     }
 }

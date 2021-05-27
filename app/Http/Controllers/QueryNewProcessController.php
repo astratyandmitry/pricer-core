@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Query;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -19,7 +19,7 @@ class QueryNewProcessController extends Controller
             'results_url' => 'required|max:1000',
         ]);
 
-        $query = Query::query()->create($payload);
+        $query = Subscription::query()->create($payload);
 
         return redirect()->route('query.detail', $query);
     }

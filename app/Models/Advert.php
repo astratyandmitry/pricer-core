@@ -2,41 +2,59 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
- * App\Models\Advert
- *
- * @property int $id
- * @property string $page_url
- * @property float $current_price
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|Advert newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert query()
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereCurrentPrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert wherePageUrl($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property string $marketplace_key
  * @property string $title
- * @property string $url
+ * @property string|null $url
  * @property float $price
- * @method static \Illuminate\Database\Eloquent\Builder|Advert wherePrice($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Advert whereUrl($value)
+ *
+ * @property \App\Models\Marketplace $marketplace
+ * @property \App\Models\AdvertUpdate[]|\Illuminate\Database\Eloquent\Collection $updates
+ * @property \App\Models\AdvertUpdate $latest_update
+ * @property \App\Models\AdvertUpdate $previous_update
  */
 class Advert extends Model
 {
-    use HasFactory;
+    /**
+     * @var array
+     */
+    protected $casts = [
+        'price' => 'double',
+    ];
 
-    protected $guarded = [];
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function marketplace(): BelongsTo
+    {
+        return $this->belongsTo(Marketplace::class, 'marketplace_key', 'key');
+    }
 
-    public function updates()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function updates(): HasMany
     {
         return $this->hasMany(AdvertUpdate::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function latest_update(): HasOne
+    {
+        return $this->hasOne(AdvertUpdate::class)->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function previous_update(): HasOne
+    {
+        return $this->latest_update()->skip(1);
     }
 }

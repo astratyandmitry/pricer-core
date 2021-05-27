@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Jobs\InitialParseResultsPage;
-use App\Models\Query;
+use App\Models\Subscription;
 use Illuminate\Console\Command;
 
 class BackgroundParseResultsPagesComman extends Command
@@ -39,7 +39,7 @@ class BackgroundParseResultsPagesComman extends Command
      */
     public function handle()
     {
-        foreach (Query::all() as $query) {
+        foreach (Subscription::all() as $query) {
             InitialParseResultsPage::dispatch($query);
         }
 
