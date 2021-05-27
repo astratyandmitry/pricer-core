@@ -10,12 +10,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $marketplace_key
  * @property string $title
  * @property string|null $url
- * @property float $price
+ * @property double $price
  *
  * @property \App\Models\Marketplace $marketplace
  * @property \App\Models\AdvertUpdate[]|\Illuminate\Database\Eloquent\Collection $updates
  * @property \App\Models\AdvertUpdate $latest_update
- * @property \App\Models\AdvertUpdate $previous_update
  */
 class Advert extends Model
 {
@@ -39,7 +38,7 @@ class Advert extends Model
      */
     public function updates(): HasMany
     {
-        return $this->hasMany(AdvertUpdate::class);
+        return $this->hasMany(AdvertUpdate::class)->latest();
     }
 
     /**
@@ -48,13 +47,5 @@ class Advert extends Model
     public function latest_update(): HasOne
     {
         return $this->hasOne(AdvertUpdate::class)->latest();
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function previous_update(): HasOne
-    {
-        return $this->latest_update()->skip(1);
     }
 }

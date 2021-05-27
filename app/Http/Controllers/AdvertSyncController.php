@@ -14,7 +14,7 @@ class AdvertSyncController extends Controller
      */
     public function __invoke(Advert $advert): RedirectResponse
     {
-        InitialParseResultsPage::dispatch($advert);
+        //InitialParseResultsPage::dispatch($advert);
 
         return redirect()->route('advert.detail', $advert)->with('sync', true);
     }

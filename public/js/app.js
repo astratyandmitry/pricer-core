@@ -2783,7 +2783,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
    * The base implementation of `_.propertyOf` without support for deep paths.
    *
    * @private
-   * @param {Object} object The object to query.
+   * @param {Object} object The object to subscription.
    * @returns {Function} Returns the new accessor function.
    */
   function basePropertyOf(object) {
@@ -2881,7 +2881,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
    * of key-value pairs for `object` corresponding to the property names of `props`.
    *
    * @private
-   * @param {Object} object The object to query.
+   * @param {Object} object The object to subscription.
    * @param {Array} props The property names to get values for.
    * @returns {Object} Returns the key-value pairs.
    */
@@ -2923,7 +2923,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
    * of `props`.
    *
    * @private
-   * @param {Object} object The object to query.
+   * @param {Object} object The object to subscription.
    * @param {Array} props The property names to get values for.
    * @returns {Object} Returns the array of property values.
    */
@@ -2937,7 +2937,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
    * Checks if a `cache` value for `key` exists.
    *
    * @private
-   * @param {Object} cache The cache to query.
+   * @param {Object} cache The cache to subscription.
    * @param {string} key The key of the entry to check.
    * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
    */
@@ -3032,7 +3032,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
    * Gets the value at `key` of `object`.
    *
    * @private
-   * @param {Object} [object] The object to query.
+   * @param {Object} [object] The object to subscription.
    * @param {string} key The key of the property to get.
    * @returns {*} Returns the property value.
    */
@@ -4302,7 +4302,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Creates an array of the enumerable property names of the array-like `value`.
      *
      * @private
-     * @param {*} value The value to query.
+     * @param {*} value The value to subscription.
      * @param {boolean} inherited Specify returning inherited property names.
      * @returns {Array} Returns the array of property names.
      */
@@ -4947,7 +4947,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.get` without support for default values.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path of the property to get.
      * @returns {*} Returns the resolved value.
      */
@@ -4969,7 +4969,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * symbols of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Function} keysFunc The function to get the keys of `object`.
      * @param {Function} symbolsFunc The function to get the symbols of `object`.
      * @returns {Array} Returns the array of property names and symbols.
@@ -4983,7 +4983,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `getTag` without fallbacks for buggy environments.
      *
      * @private
-     * @param {*} value The value to query.
+     * @param {*} value The value to subscription.
      * @returns {string} Returns the `toStringTag`.
      */
     function baseGetTag(value) {
@@ -5012,7 +5012,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.has` without support for deep paths.
      *
      * @private
-     * @param {Object} [object] The object to query.
+     * @param {Object} [object] The object to subscription.
      * @param {Array|string} key The key to check.
      * @returns {boolean} Returns `true` if `key` exists, else `false`.
      */
@@ -5024,7 +5024,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.hasIn` without support for deep paths.
      *
      * @private
-     * @param {Object} [object] The object to query.
+     * @param {Object} [object] The object to subscription.
      * @param {Array|string} key The key to check.
      * @returns {boolean} Returns `true` if `key` exists, else `false`.
      */
@@ -5131,7 +5131,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * method arguments.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path of the method to invoke.
      * @param {Array} args The arguments to invoke the method with.
      * @returns {*} Returns the result of the invoked method.
@@ -5402,7 +5402,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.keys` which doesn't treat sparse arrays as dense.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names.
      */
     function baseKeys(object) {
@@ -5422,7 +5422,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.keysIn` which doesn't treat sparse arrays as dense.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names.
      */
     function baseKeysIn(object) {
@@ -5622,7 +5622,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * The base implementation of `_.nth` which doesn't coerce arguments.
      *
      * @private
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} n The index of the element to return.
      * @returns {*} Returns the nth element of `array`.
      */
@@ -6277,7 +6277,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * without support for iteratee shorthands.
      *
      * @private
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {Function} predicate The function invoked per iteration.
      * @param {boolean} [isDrop] Specify dropping elements instead of taking them.
      * @param {boolean} [fromRight] Specify iterating from right to left.
@@ -6395,7 +6395,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {*} value The value to inspect.
-     * @param {Object} [object] The object to query keys on.
+     * @param {Object} [object] The object to subscription keys on.
      * @returns {Array} Returns the cast property path array.
      */
     function castPath(value, object) {
@@ -7793,7 +7793,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Creates an array of own enumerable property names and symbols of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names and symbols.
      */
     function getAllKeys(object) {
@@ -7805,7 +7805,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * symbols of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names and symbols.
      */
     function getAllKeysIn(object) {
@@ -7816,7 +7816,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets metadata for `func`.
      *
      * @private
-     * @param {Function} func The function to query.
+     * @param {Function} func The function to subscription.
      * @returns {*} Returns the metadata for `func`.
      */
     var getData = !metaMap ? noop : function(func) {
@@ -7827,7 +7827,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the name of `func`.
      *
      * @private
-     * @param {Function} func The function to query.
+     * @param {Function} func The function to subscription.
      * @returns {string} Returns the function name.
      */
     function getFuncName(func) {
@@ -7878,7 +7878,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the data for `map`.
      *
      * @private
-     * @param {Object} map The map to query.
+     * @param {Object} map The map to subscription.
      * @param {string} key The reference key.
      * @returns {*} Returns the map data.
      */
@@ -7893,7 +7893,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the property names, values, and compare flags of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the match data of `object`.
      */
     function getMatchData(object) {
@@ -7913,7 +7913,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the native function at `key` of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {string} key The key of the method to get.
      * @returns {*} Returns the function if it's native, else `undefined`.
      */
@@ -7926,7 +7926,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * A specialized version of `baseGetTag` which ignores `Symbol.toStringTag` values.
      *
      * @private
-     * @param {*} value The value to query.
+     * @param {*} value The value to subscription.
      * @returns {string} Returns the raw `toStringTag`.
      */
     function getRawTag(value) {
@@ -7953,7 +7953,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Creates an array of the own enumerable symbols of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of symbols.
      */
     var getSymbols = !nativeGetSymbols ? stubArray : function(object) {
@@ -7970,7 +7970,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Creates an array of the own and inherited enumerable symbols of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of symbols.
      */
     var getSymbolsIn = !nativeGetSymbols ? stubArray : function(object) {
@@ -7986,7 +7986,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the `toStringTag` of `value`.
      *
      * @private
-     * @param {*} value The value to query.
+     * @param {*} value The value to subscription.
      * @returns {string} Returns the `toStringTag`.
      */
     var getTag = baseGetTag;
@@ -8059,7 +8059,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Checks if `path` exists on `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path to check.
      * @param {Function} hasFunc The function to check properties.
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
@@ -8244,7 +8244,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {*} value The value to check.
-     * @param {Object} [object] The object to query keys on.
+     * @param {Object} [object] The object to subscription keys on.
      * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
      */
     function isKey(value, object) {
@@ -8458,7 +8458,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * except that it includes inherited enumerable properties.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names.
      */
     function nativeKeysIn(object) {
@@ -8516,7 +8516,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the parent value at `path` of `object`.
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array} path The path to get the parent value of.
      * @returns {*} Returns the parent value.
      */
@@ -8550,7 +8550,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * Gets the value at `key`, unless `key` is "__proto__" or "constructor".
      *
      * @private
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {string} key The key of the property to get.
      * @returns {*} Returns the property value.
      */
@@ -8974,7 +8974,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.5.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} [n=1] The number of elements to drop.
      * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
@@ -9008,7 +9008,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} [n=1] The number of elements to drop.
      * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
@@ -9045,7 +9045,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {Array} Returns the slice of `array`.
      * @example
@@ -9086,7 +9086,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {Array} Returns the slice of `array`.
      * @example
@@ -9358,7 +9358,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @alias first
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @returns {*} Returns the first element of `array`.
      * @example
      *
@@ -9414,7 +9414,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.1.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -9547,7 +9547,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.1.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @returns {*} Returns the last element of `array`.
      * @example
      *
@@ -9603,7 +9603,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.11.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} [n=0] The index of the element to return.
      * @returns {*} Returns the nth element of `array`.
      * @example
@@ -10077,7 +10077,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @returns {Array} Returns the slice of `array`.
      * @example
      *
@@ -10096,7 +10096,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 0.1.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} [n=1] The number of elements to take.
      * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
@@ -10129,7 +10129,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {number} [n=1] The number of elements to take.
      * @param- {Object} [guard] Enables use as an iteratee for methods like `_.map`.
      * @returns {Array} Returns the slice of `array`.
@@ -10166,7 +10166,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {Array} Returns the slice of `array`.
      * @example
@@ -10207,7 +10207,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Array
-     * @param {Array} array The array to query.
+     * @param {Array} array The array to subscription.
      * @param {Function} [predicate=_.identity] The function invoked per iteration.
      * @returns {Array} Returns the slice of `array`.
      * @example
@@ -15058,7 +15058,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.7.0
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path of the property to get.
      * @param {*} [defaultValue] The value returned for `undefined` resolved values.
      * @returns {*} Returns the resolved value.
@@ -15087,7 +15087,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path to check.
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
      * @example
@@ -15118,7 +15118,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path to check.
      * @returns {boolean} Returns `true` if `path` exists, else `false`.
      * @example
@@ -15214,7 +15214,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 4.0.0
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path of the method to invoke.
      * @param {...*} [args] The arguments to invoke the method with.
      * @returns {*} Returns the result of the invoked method.
@@ -15238,7 +15238,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names.
      * @example
      *
@@ -15268,7 +15268,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property names.
      * @example
      *
@@ -15552,7 +15552,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {Array|string} path The path of the property to resolve.
      * @param {*} [defaultValue] The value returned for `undefined` resolved values.
      * @returns {*} Returns the resolved value.
@@ -15665,7 +15665,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 4.0.0
      * @alias entries
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the key-value pairs.
      * @example
      *
@@ -15691,7 +15691,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 4.0.0
      * @alias entriesIn
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the key-value pairs.
      * @example
      *
@@ -15860,7 +15860,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @since 0.1.0
      * @memberOf _
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property values.
      * @example
      *
@@ -15891,7 +15891,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Object
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Array} Returns the array of property values.
      * @example
      *
@@ -17603,7 +17603,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.7.0
      * @category Util
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @param {...*} [args] The arguments to invoke the method with.
      * @returns {Function} Returns the new invoker function.
      * @example
@@ -17875,7 +17875,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @memberOf _
      * @since 3.0.0
      * @category Util
-     * @param {Object} object The object to query.
+     * @param {Object} object The object to subscription.
      * @returns {Function} Returns the new accessor function.
      * @example
      *
@@ -19298,7 +19298,7 @@ process.umask = function() { return 0; };
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -19312,20 +19312,20 @@ process.umask = function() { return 0; };
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/chunk loaded */
 /******/ 	(() => {
@@ -19357,7 +19357,7 @@ process.umask = function() { return 0; };
 /******/ 			return result;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -19369,12 +19369,12 @@ process.umask = function() { return 0; };
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -19385,7 +19385,7 @@ process.umask = function() { return 0; };
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -19394,11 +19394,11 @@ process.umask = function() { return 0; };
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/ 		
+/******/
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
@@ -19406,19 +19406,19 @@ process.umask = function() { return 0; };
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0
 /******/ 		};
-/******/ 		
+/******/
 /******/ 		// no chunk on demand loading
-/******/ 		
+/******/
 /******/ 		// no prefetching
-/******/ 		
+/******/
 /******/ 		// no preloaded
-/******/ 		
+/******/
 /******/ 		// no HMR
-/******/ 		
+/******/
 /******/ 		// no HMR manifest
-/******/ 		
+/******/
 /******/ 		__webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
-/******/ 		
+/******/
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime] = data;
@@ -19441,20 +19441,20 @@ process.umask = function() { return 0; };
 /******/ 			}
 /******/ 			__webpack_require__.O();
 /******/ 		}
-/******/ 		
+/******/
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/js/app.js")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
-/******/ 	
+/******/
 /******/ })()
 ;

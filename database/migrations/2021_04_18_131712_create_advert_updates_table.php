@@ -17,6 +17,8 @@ class CreateAdvertUpdatesTable extends Migration
             $table->id();
             $table->foreignId('advert_id')->constrained('adverts');
             $table->unsignedDouble('price', 10, 2)->index();
+            $table->unsignedDouble('price_prev', 10, 2)->index();
+            $table->double('price_diff', 10, 2)->index();
             $table->timestamps();
         });
     }

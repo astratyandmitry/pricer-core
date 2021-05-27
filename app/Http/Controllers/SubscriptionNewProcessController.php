@@ -6,7 +6,7 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
-class QueryNewProcessController extends Controller
+class SubscriptionNewProcessController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request
@@ -15,12 +15,12 @@ class QueryNewProcessController extends Controller
     public function __invoke(Request $request): RedirectResponse
     {
         $payload = $request->validate([
-            'value' => 'required|max:2500',
-            'results_url' => 'required|max:1000',
+            'title' => 'required|max:2500',
+            'url' => 'required|max:1000',
         ]);
 
         $query = Subscription::query()->create($payload);
 
-        return redirect()->route('query.detail', $query);
+        return redirect()->route('subscription.detail', $query);
     }
 }

@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer $advert_id
- * @property float $price
+ * @property double $price
+ * @property double $price_prev
+ * @property double $price_diff
  *
  * @property \App\Models\Advert $advert
  */
@@ -17,6 +19,8 @@ class AdvertUpdate extends Model
      */
     protected $casts = [
         'price' => 'double',
+        'price_prev' => 'double',
+        'price_diff' => 'double',
     ];
 
     /**
@@ -24,6 +28,6 @@ class AdvertUpdate extends Model
      */
     public function advert(): BelongsTo
     {
-        return $this->belongsTo(Advert::class);
+        return $this->belongsTo(Advert::class)->latest();
     }
 }

@@ -3,13 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function() {
-    return redirect()->route('query.list');
-});
+    return redirect()->route('subscription.list');
+})->name('home');
 
-Route::get('/queries', \App\Http\Controllers\QueryListController::class)->name('query.list');
-Route::get('/query/new', \App\Http\Controllers\QueryNewFormController::class)->name('query.new');
-Route::post('/query/new', \App\Http\Controllers\QueryNewProcessController::class)->name('query.new');
-Route::get('/query/{query}', \App\Http\Controllers\QueryDetailController::class)->name('query.detail');
-Route::get('/query/{query}/sync', \App\Http\Controllers\QuerySyncController::class)->name('query.sync');
+Route::get('/subscriptions', \App\Http\Controllers\SubscriptionListController::class)->name('subscription.list');
+Route::post('/subscription/new', \App\Http\Controllers\SubscriptionNewProcessController::class)->name('subscription.new');
+Route::get('/subscription/{subscription}', \App\Http\Controllers\SubscriptionDetailController::class)->name('subscription.detail');
+Route::get('/subscription/{subscription}/sync', \App\Http\Controllers\SubscriptionSyncController::class)->name('subscription.sync');
 Route::get('/advert/{advert}', \App\Http\Controllers\AdvertDetailController::class)->name('advert.detail');
 Route::get('/advert/{advert}/sync', \App\Http\Controllers\AdvertSyncController::class)->name('advert.sync');
