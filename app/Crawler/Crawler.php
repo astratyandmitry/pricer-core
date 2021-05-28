@@ -36,6 +36,7 @@ abstract class Crawler
 
     /**
      * @param string $url
+     * @param bool $usesProxy
      * @param int|null $page
      * @return \App\Crawler\Crawler
      * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
@@ -43,15 +44,14 @@ abstract class Crawler
      * @throws \PHPHtmlParser\Exceptions\ContentLengthException
      * @throws \PHPHtmlParser\Exceptions\LogicalException
      * @throws \PHPHtmlParser\Exceptions\StrictException
-     * @throws \Psr\Http\Client\ClientExceptionInterface
      */
-    public function parse(string $url, ?int $page = null): Crawler
+    public function parse(string $url, bool $usesProxy = false, ?int $page = null): Crawler
     {
         if ($page !== null && $page > 1) {
             $url = (Str::contains($url, '?') ? "{$url}&page={$page}" : "{$url}?page={$page}");
         }
 
-        $this->dom = (new Dom)->loadStr($this->getHtml($url));
+        $this->dom = (new Dom)->loadStr($this->getHtml($url, $usesProxy));
 
         return $this;
     }
@@ -77,9 +77,10 @@ abstract class Crawler
 
     /**
      * @param string $url
+     * @param bool $usesProxy
      * @return string
      */
-    private function getHtml(string $url): string
+    private function getHtml(string $url, bool $usesProxy = false): string
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -87,10 +88,12 @@ abstract class Crawler
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
 
-        //curl_setopt($ch, CURLOPT_PROXYTYPE, 'HTTP');
-        //curl_setopt($ch, CURLOPT_PROXY, $proxy->ip);
-        //curl_setopt($ch, CURLOPT_PROXYPORT, $proxy->port);
-        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, "{$proxy->username}:{$proxy->password}");
+        if ($usesProxy === true) {
+            curl_setopt($ch, CURLOPT_PROXYTYPE, 'HTTPS');
+            curl_setopt($ch, CURLOPT_PROXY, $this->proxy->ip);
+            curl_setopt($ch, CURLOPT_PROXYPORT, $this->proxy->port);
+            curl_setopt($ch, CURLOPT_PROXYUSERPWD, "{$this->proxy->username}:{$this->proxy->password}");
+        }
 
         $html = curl_exec($ch);
 

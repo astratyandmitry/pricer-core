@@ -17,6 +17,7 @@ class CreateMarketplacesTable extends Migration
             $table->id();
             $table->string('key', 40)->unique()->index();
             $table->string('title', 120)->unique();
+            $table->boolean('proxy')->default(false);
             $table->timestamps();
         });
     }

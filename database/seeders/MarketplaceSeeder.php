@@ -14,14 +14,17 @@ class MarketplaceSeeder extends Seeder
         [
             'key' => 'olx',
             'title' => 'OLX',
+            'proxy' => false,
         ],
         [
             'key' => 'kolesa',
             'title' => 'Колёса',
+            'proxy' => true,
         ],
         [
             'key' => 'market',
             'title' => 'Маркет',
+            'proxy' => true,
         ],
     ];
 

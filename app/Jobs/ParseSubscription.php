@@ -37,7 +37,11 @@ class ParseSubscription
     {
         $crawler = Factory::make($this->subscription->marketplace);
 
-        $crawler->parse($this->subscription->url, $this->pageNumber);
+        $crawler->parse(
+            $this->subscription->url,
+            $this->subscription->marketplace->proxy,
+            $this->pageNumber
+        );
 
         SyncParsedAdverts::dispatch($this->subscription, $crawler->adverts());
 
