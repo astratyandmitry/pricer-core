@@ -65,8 +65,8 @@ class KolesaCrawler extends Crawler
             return null;
         }
 
-        $lastPage =  $pagination[count($pagination) - 1];;
+        $lastPage = $pagination[count($pagination) - 1];
 
-        return (int) optional($lastPage->find('span')[0])->innerText;
+        return (int) $lastPage->innerText;
     }
 }

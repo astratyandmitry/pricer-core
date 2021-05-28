@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use App\Console\Commands\BackgroundParseResultsPagesComman;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -25,7 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command(BackgroundParseResultsPagesComman::class)->everyFifteenMinutes();
+        $schedule->command('pricer:test olx')->hourlyAt(15);
+        $schedule->command('pricer:test kolesa')->hourlyAt(30);
+        $schedule->command('pricer:test market')->hourlyAt(45);
     }
 
     /**

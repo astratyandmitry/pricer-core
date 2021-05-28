@@ -20,8 +20,8 @@ class MarketplaceSeeder extends Seeder
             'title' => 'Колёса',
         ],
         [
-            'key' => 'kaspi',
-            'title' => 'Kaspi',
+            'key' => 'market',
+            'title' => 'Маркет',
         ],
     ];
 

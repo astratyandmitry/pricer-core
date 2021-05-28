@@ -22,9 +22,9 @@ class SubscriptionSeeder extends Seeder
             'url' => 'https://www.olx.kz/elektronika/noutbuki-i-aksesuary/noutbuki/alma-ata/q-macbook-pro/?search%5Bfilter_enum_state%5D%5B0%5D=new',
         ],
         [
-            'marketplace_key' => 'kaspi',
-            'title' => 'Apple iPhone 12 Pro 128Gb синий',
-            'url' => 'https://kaspi.kz/shop/p/apple-iphone-12-pro-128gb-sinii-100657202',
+            'marketplace_key' => 'market',
+            'title' => 'iPhone XR в Алматы',
+            'url' => 'https://market.kz/almaty/k--iphone-xr/?listingType=suggest_enter',
         ],
     ];
 
