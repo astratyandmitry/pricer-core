@@ -3,19 +3,23 @@
 @extends('layout.master')
 
 @section('content')
-  <div id="heading" class="flex items-center justify-between mb-6">
+  <div id="heading" class="flex items-center justify-between mb-12">
     <div class="flex items-center">
-      <div class="text-3xl font-medium flex items-center">
-        <div>
-          {{ $advert->title }}
-        </div>
+      <img src="{{ $advert->image }}" class="rounded-md shadow-md object-cover h-40 w-64 mr-12" alt="">
 
-        <a href="{{ $advert->url }}" target="_blank" class="text-blue-600 hover:text-blue-700">
-          <svg class="h-8 w-8 cursor-pointer ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-          </svg>
-        </a>
+      <div>
+        <div class="text-3xl font-medium flex items-center">
+          <div>
+            {{ $advert->title }}
+          </div>
+
+          <a href="{{ $advert->url }}" target="_blank" class="text-blue-600 hover:text-blue-700">
+            <svg class="h-8 w-8 cursor-pointer ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -63,6 +67,10 @@
               @elseif ($update->price_diff < 0)
                 <div class="text-green-500 font-medium">
                   {{ $update->price_diff }}%
+                </div>
+              @else
+                <div class="text-gray-400 font-medium">
+                  0%
                 </div>
               @endif
             </td>

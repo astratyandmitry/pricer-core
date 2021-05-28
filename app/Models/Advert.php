@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property string $marketplace_key
  * @property string $title
  * @property string|null $url
- * @property double $price
+ * @property string $image
  *
  * @property \App\Models\Marketplace $marketplace
  * @property \App\Models\AdvertUpdate[]|\Illuminate\Database\Eloquent\Collection $updates
@@ -18,13 +18,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Advert extends Model
 {
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'price' => 'double',
-    ];
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

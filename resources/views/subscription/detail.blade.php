@@ -73,14 +73,14 @@
     <div id="items" class="mt-12">
       <div class="text-2xl font-medium flex items-center">
         <div>
-          Обявления на {{ $subscription->marketplace->title }}
+          Объявления на {{ $subscription->marketplace->title }}
         </div>
       </div>
 
       <table border="0" cellpadding="0" cellspacing="0"
              class="w-full mt-6 bg-white shadow-md rounded-md p-6 overflow-hidden">
         <tr class="bg-gray-500">
-          <th class="text-left font-medium text-xs uppercase text-white p-4">
+          <th class="text-left font-medium text-xs uppercase text-white p-4" colspan="2">
             Объявление
           </th>
           <th class="text-right font-medium text-xs uppercase text-white p-4 w-32">
@@ -96,6 +96,20 @@
         @foreach($subscription->adverts as $advert)
           @continue(!$advert->latest_update)
           <tr class="border-t border-gray-100 hover:bg-gray-50 transition">
+            <td class="pl-4 py-2 w-24">
+              @if ($advert->image)
+                <img src="{{ $advert->image }}" class="h-12 w-24 object-cover rounded-md">
+              @else
+                <div class="h-12 w-24 bg-gray-100 rounded-md flex items-center justify-center">
+                  <svg class="h-8 w-8 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                    <path
+                      d="M21 21H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3m3-3h6l2 3h4a2 2 0 0 1 2 2v9.34m-7.72-2.06a4 4 0 1 1-5.56-5.56"/>
+                  </svg>
+                </div>
+              @endif
+            </td>
             <td class="p-4">
               <div class="leading-none">
                 <a href="{{ route('advert.detail', $advert) }}" class="text-blue-600 hover:text-blue-700">
@@ -104,7 +118,7 @@
               </div>
 
               <a href="{{ $advert->url }}" target="_blank"
-                 class="text-xs text-gray-500 leading-none hover:text-gray-700">
+                 class="text-xs text-gray-500 inline-block leading-none mt-2 hover:text-gray-700">
                 {{ $advert->url }}
               </a>
             </td>
@@ -116,6 +130,10 @@
               @elseif ($advert->latest_update->price_diff < 0)
                 <div class="text-green-500 font-medium">
                   {{ $advert->latest_update->price_diff }}%
+                </div>
+              @else
+                <div class="text-gray-400 font-medium">
+                  0%
                 </div>
               @endif
             </td>

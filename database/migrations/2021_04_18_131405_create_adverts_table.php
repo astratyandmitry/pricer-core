@@ -18,7 +18,7 @@ class CreateAdvertsTable extends Migration
             $table->string('marketplace_key', 40)->index();
             $table->string('title', 500);
             $table->string('url', 1000)->nullable();
-            $table->unsignedDouble('price', 10, 2)->index();
+            $table->string('image', 700)->nullable();
             $table->timestamps();
 
             $table->foreign('marketplace_key')->references('key')->on('marketplaces');
