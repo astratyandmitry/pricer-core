@@ -4,7 +4,7 @@ namespace App\Crawler;
 
 use Illuminate\Support\Collection;
 
-class OlxCrawler extends Crawler
+class KolesaCrawler extends Crawler
 {
     /**
      * @return \Illuminate\Support\Collection
@@ -18,7 +18,7 @@ class OlxCrawler extends Crawler
      */
     public function adverts(): Collection
     {
-        $offers = $this->dom->find('.offer');
+        $offers = $this->dom->find('.vw-item');
 
         $adverts = collect();
 
@@ -28,18 +28,18 @@ class OlxCrawler extends Crawler
 
         /** @var \PHPHtmlParser\Dom\Node\HtmlNode $offer */
         foreach ($offers as $offer) {
-            if (! $aTag = $offer->find('a.link')[0]) {
+            if (! $aTag = $offer->find('.a-el-info-title a.ddl_product_link')[0]) {
                 continue;
             }
 
-            $priceStr = optional($offer->find('.price strong')[0])->text;
+            $priceStr = optional($offer->find('.price')[0])->text;
 
             if (! $priceValue = preg_replace('/[^0-9]/', '', $priceStr)) {
                 continue;
             }
 
-            $advertImage = optional($offer->find('.photo-cell img')[0])->getAttribute('src');
-            $advertUrl = preg_replace('/\.html.+/', '', $aTag->getAttribute('href')).'.html';
+            $advertImage = optional($offer->find('.a-elem__picture img')[0])->getAttribute('src');
+            $advertUrl = "https://kolesa.kz{$aTag->getAttribute('href')}";
 
             $adverts->push([
                 'title' => $aTag->innerText,
@@ -59,7 +59,7 @@ class OlxCrawler extends Crawler
      */
     public function pages(): ?int
     {
-        $pagination = $this->dom->find('.pager .item');
+        $pagination = $this->dom->find('.pager li');
 
         if (count($pagination) <= 1) {
             return null;

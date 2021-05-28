@@ -73,7 +73,7 @@
     <div id="items" class="mt-12">
       <div class="text-2xl font-medium flex items-center">
         <div>
-          Объявления на {{ $subscription->marketplace->title }}
+          Объявления на {{ $subscription->marketplace->title }} ({{ $subscription->adverts->count() }})
         </div>
       </div>
 
