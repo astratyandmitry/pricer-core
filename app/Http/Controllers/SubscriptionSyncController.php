@@ -14,7 +14,7 @@ class SubscriptionSyncController extends Controller
      */
     public function __invoke(Subscription $subscription): RedirectResponse
     {
-        ParseSubscription::dispatch($subscription);
+        ParseSubscription::dispatchNow($subscription);
 
         return redirect()->route('subscription.detail', $subscription)->with('sync', true);
     }

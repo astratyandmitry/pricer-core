@@ -45,13 +45,13 @@ class ParseSubscription implements ShouldQueue
         $crawler = new Crawler($driver, $this->subscription->marketplace->proxy);
         $crawler->parse($this->subscription->url, $this->pageNumber);
 
-        SyncParsedAdverts::dispatch($this->subscription, $crawler->adverts());
+        SyncParsedAdverts::dispatchNow($this->subscription, $crawler->adverts());
 
         $pagesCount = $crawler->pages();
 
         if ($this->pageNumber === null && $pagesCount > 1) {
             for ($pageNumber = 2; $pageNumber <= $pagesCount; $pageNumber++) {
-                ParseSubscription::dispatch($this->subscription, $pageNumber);
+                ParseSubscription::dispatchNow($this->subscription, $pageNumber);
             }
         }
     }

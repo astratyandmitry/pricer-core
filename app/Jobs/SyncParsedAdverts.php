@@ -57,7 +57,7 @@ class SyncParsedAdverts implements ShouldQueue
 
             $this->addAdvertToSubscription($advert);
 
-            LogAdvertUpdate::dispatch($advert, $data['price']);
+            LogAdvertUpdate::dispatchNow($advert, $data['price']);
         }
     }
 

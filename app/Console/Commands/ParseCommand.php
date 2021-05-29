@@ -44,9 +44,9 @@ class ParseCommand extends Command
 
             $this->info("Parsing Subscription #{$subscription->id}");
 
-            ParseSubscription::dispatch($subscription);
+            ParseSubscription::dispatchNow($subscription);
 
-            LogSubscriptionUpdate::dispatch($subscription);
+            LogSubscriptionUpdate::dispatchNow($subscription);
         }
 
         return 1;

@@ -41,7 +41,7 @@ class Crawler
         $this->browser = CrawlerBrowser::query()->inRandomOrder()->first();
 
         if ($proxy) {
-            $this->proxy = CrawlerProxy::query()->inRandomOrder()->first();
+            $this->proxy = CrawlerProxy::query()->whereDate('expired_at', '>', now())->inRandomOrder()->first();
         }
     }
 
