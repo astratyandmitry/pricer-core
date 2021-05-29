@@ -6,7 +6,7 @@ use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
-class SubscriptionNewProcessController extends Controller
+class SubscriptionStoreController extends Controller
 {
     /**
      * @param \Illuminate\Http\Request $request

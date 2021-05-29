@@ -48,4 +48,12 @@ class SubscriptionUpdate extends Model
     {
         return $this->belongsTo(Subscription::class);
     }
+
+    /**
+     * @return bool
+     */
+    public function createdLessThan15MinutesAgo(): bool
+    {
+        return $this->created_at->isAfter(now()->subMinutes(15));
+    }
 }

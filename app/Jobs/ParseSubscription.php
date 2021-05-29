@@ -2,13 +2,18 @@
 
 namespace App\Jobs;
 
-use App\Crawler\Factory;
+use App\Crawler\Crawler;
 use App\Models\Subscription;
+use Illuminate\Bus\Queueable;
+use App\Crawler\Drivers\Factory;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class ParseSubscription
+class ParseSubscription implements ShouldQueue
 {
-    use Dispatchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var \App\Models\Subscription
@@ -35,13 +40,10 @@ class ParseSubscription
      */
     public function handle(): void
     {
-        $crawler = Factory::make($this->subscription->marketplace);
+        $driver = Factory::make($this->subscription->marketplace);
 
-        $crawler->parse(
-            $this->subscription->url,
-            $this->subscription->marketplace->proxy,
-            $this->pageNumber
-        );
+        $crawler = new Crawler($driver, $this->subscription->marketplace->proxy);
+        $crawler->parse($this->subscription->url, $this->pageNumber);
 
         SyncParsedAdverts::dispatch($this->subscription, $crawler->adverts());
 

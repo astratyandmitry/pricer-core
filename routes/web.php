@@ -7,7 +7,7 @@ Route::get('/', function() {
 })->name('home');
 
 Route::get('/subscriptions', \App\Http\Controllers\SubscriptionListController::class)->name('subscription.list');
-Route::post('/subscription/new', \App\Http\Controllers\SubscriptionNewProcessController::class)->name('subscription.new');
+Route::post('/subscriptions', \App\Http\Controllers\SubscriptionStoreController::class)->name('subscription.new');
 Route::get('/subscription/{subscription}', \App\Http\Controllers\SubscriptionDetailController::class)->name('subscription.detail');
 Route::get('/subscription/{subscription}/sync', \App\Http\Controllers\SubscriptionSyncController::class)->name('subscription.sync');
 Route::get('/advert/{advert}', \App\Http\Controllers\AdvertDetailController::class)->name('advert.detail');

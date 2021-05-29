@@ -3,11 +3,15 @@
 namespace App\Jobs;
 
 use App\Models\Subscription;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class LogSubscriptionUpdate
+class LogSubscriptionUpdate implements ShouldQueue
 {
-    use Dispatchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var \App\Models\Subscription
@@ -66,18 +70,18 @@ class LogSubscriptionUpdate
         $avg_diff = 0;
 
         if ($currentState = $this->subscription->latest_update) {
-            if ($this->subscription->latest_update->created_at->isAfter(now()->subMinutes(15))) {
+            if (optional($this->subscription->latest_update)->createdLessThan15MinutesAgo()) {
                 return;
             }
 
             $count_prev = $currentState->adverts;
             $count_diff = $count - $count_prev;
             $min_prev = $currentState->price_min;
-            $min_diff = $this->diff($min_prev, $min);
+            $min_diff = diff_percentage($min_prev, $min);
             $max_prev = $currentState->price_max;
-            $max_diff = $this->diff($max_prev, $max);
+            $max_diff = diff_percentage($max_prev, $max);
             $avg_prev = $currentState->price_avg;
-            $avg_diff = $this->diff($avg_prev, $avg);
+            $avg_diff = diff_percentage($avg_prev, $avg);
         }
 
         if ($currentState && ! $count_diff && ! $min_diff && ! $max_diff && ! $avg_diff) {
@@ -98,15 +102,5 @@ class LogSubscriptionUpdate
             'price_avg_prev' => $avg_prev,
             'price_avg_diff' => $avg_diff,
         ]);
-    }
-
-    /**
-     * @param float $old
-     * @param float $new
-     * @return float
-     */
-    private function diff(float $old, float $new): float
-    {
-        return (1 - $old / $new) * 100;
     }
 }

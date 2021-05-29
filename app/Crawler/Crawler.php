@@ -6,10 +6,16 @@ use PHPHtmlParser\Dom;
 use Illuminate\Support\Str;
 use App\Models\CrawlerProxy;
 use App\Models\CrawlerBrowser;
+use App\Crawler\Drivers\Driver;
 use Illuminate\Support\Collection;
 
-abstract class Crawler
+class Crawler
 {
+    /**
+     * @var \App\Crawler\Drivers\Driver
+     */
+    private $driver;
+
     /**
      * @var \PHPHtmlParser\Dom
      */
@@ -26,17 +32,21 @@ abstract class Crawler
     private $proxy;
 
     /**
-     * @return void
+     * @param \App\Crawler\Drivers\Driver $driver
+     * @param bool $proxy
      */
-    public function __construct()
+    public function __construct(Driver $driver, bool $proxy = false)
     {
+        $this->driver = $driver;
         $this->browser = CrawlerBrowser::query()->inRandomOrder()->first();
-        $this->proxy = CrawlerProxy::query()->inRandomOrder()->first();
+
+        if ($proxy) {
+            $this->proxy = CrawlerProxy::query()->inRandomOrder()->first();
+        }
     }
 
     /**
      * @param string $url
-     * @param bool $usesProxy
      * @param int|null $page
      * @return \App\Crawler\Crawler
      * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
@@ -45,13 +55,13 @@ abstract class Crawler
      * @throws \PHPHtmlParser\Exceptions\LogicalException
      * @throws \PHPHtmlParser\Exceptions\StrictException
      */
-    public function parse(string $url, bool $usesProxy = false, ?int $page = null): Crawler
+    public function parse(string $url, ?int $page = null): Crawler
     {
         if ($page !== null && $page > 1) {
             $url = (Str::contains($url, '?') ? "{$url}&page={$page}" : "{$url}?page={$page}");
         }
 
-        $this->dom = (new Dom)->loadStr($this->getHtml($url, $usesProxy));
+        $this->dom = (new Dom)->loadStr($this->getHtml($url));
 
         return $this;
     }
@@ -66,21 +76,76 @@ abstract class Crawler
      * @throws \PHPHtmlParser\Exceptions\StrictException
      * @throws \Psr\Http\Client\ClientExceptionInterface
      */
-    abstract public function adverts(): Collection;
+    public function adverts(): Collection
+    {
+        /** @var \PHPHtmlParser\Dom\Node\Collection $domOffers */
+        $domOffers = $this->dom->find(
+            $this->driver->domSelectorAdvert()
+        );
+
+        $adverts = collect();
+
+        if (! $domOffers->count()) {
+            return $adverts;
+        }
+
+        /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOffer */
+        foreach ($domOffers as $domOffer) {
+            /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOfferLink */
+            $domOfferLink = $domOffer->find($this->driver->domSelectorAdvertLink())[0];
+
+            /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOfferPrice */
+            $domOfferPrice = $domOffer->find($this->driver->domSelectorAdvertPrice())[0];
+
+            if (! $domOfferLink || ! $domOfferPrice) {
+                continue;
+            }
+
+            if (! $price = preg_replace('/[^0-9]/', '', $domOfferPrice->text)) {
+                continue;
+            }
+
+            /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOfferImage */
+            $domOfferImage = $domOffer->find($this->driver->domSelectorAdvertImage())[0];
+
+            $adverts->push([
+                'url' => $this->driver->buildAdvertUrl($domOfferLink->getAttribute('href')),
+                'image' => $domOfferImage ? $domOfferImage->getAttribute('src') : null,
+                'title' => $domOfferLink->innerText,
+                'price' => $price,
+            ]);
+        }
+
+        return $adverts;
+    }
 
     /**
-     * @return int|null
+     * @return int
      * @throws \PHPHtmlParser\Exceptions\ChildNotFoundException
      * @throws \PHPHtmlParser\Exceptions\NotLoadedException
      */
-    abstract public function pages(): ?int;
+    public function pages(): ?int
+    {
+        /** @var \PHPHtmlParser\Dom\Node\Collection $domPagination */
+        $domPagination = $this->dom->find(
+            $this->driver->domSelectorPagination()
+        );
+
+        if ($domPagination->count() <= 1) {
+            return null;
+        }
+
+        /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domPaginationLastChild */
+        $domPaginationLastChild = $domPagination[count($domPagination) - 1];
+
+        return (int) $domPaginationLastChild->innerText;
+    }
 
     /**
      * @param string $url
-     * @param bool $usesProxy
      * @return string
      */
-    private function getHtml(string $url, bool $usesProxy = false): string
+    private function getHtml(string $url): string
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -88,7 +153,7 @@ abstract class Crawler
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_HEADER, 0);
 
-        if ($usesProxy === true) {
+        if ($this->proxy) {
             curl_setopt($ch, CURLOPT_PROXYTYPE, 'HTTPS');
             curl_setopt($ch, CURLOPT_PROXY, $this->proxy->ip);
             curl_setopt($ch, CURLOPT_PROXYPORT, $this->proxy->port);

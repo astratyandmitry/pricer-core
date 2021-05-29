@@ -24,9 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('pricer:test olx')->hourlyAt(15);
-        $schedule->command('pricer:test kolesa')->hourlyAt(30);
-        $schedule->command('pricer:test market')->hourlyAt(45);
+        $schedule->command('pricer:parse olx')->hourlyAt(15);
+        $schedule->command('pricer:parse kolesa')->hourlyAt(30);
+        $schedule->command('pricer:parse market')->hourlyAt(45);
     }
 
     /**

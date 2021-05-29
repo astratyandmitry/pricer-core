@@ -13,7 +13,7 @@
     </a>
   </div>
 
-  <div class="space-y-3">
+  <div class="space-y-4">
     @each('subscription._item', $subscriptions, 'subscription', 'subscription._empty')
   </div>
 

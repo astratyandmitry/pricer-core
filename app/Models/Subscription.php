@@ -35,7 +35,8 @@ class Subscription extends Model
      */
     public function adverts(): HasManyThrough
     {
-        return $this->hasManyThrough(Advert::class, AdvertToSubscription::class, 'subscription_id', 'id', 'id', 'advert_id')->latest();
+        return $this->hasManyThrough(Advert::class, AdvertToSubscription::class, 'subscription_id', 'id', 'id', 'advert_id')
+            ->whereHas('latest_update')->latest();
     }
 
     /**

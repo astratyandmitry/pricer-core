@@ -15,7 +15,7 @@ class SubscriptionDetailController extends Controller
     {
         abort_if($subscription->trashed(), 403);
 
-        $subscription->load('updates', 'adverts', 'latest_update');
+        $subscription->load('updates', 'adverts', 'adverts.latest_update', 'latest_update');
 
         return view('subscription.detail', [
             'subscription' => $subscription,

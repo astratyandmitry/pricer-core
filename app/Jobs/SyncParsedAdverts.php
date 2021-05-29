@@ -5,12 +5,16 @@ namespace App\Jobs;
 use App\Models\Advert;
 use App\Models\AdvertToSubscription;
 use App\Models\Subscription;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Bus\Dispatchable;
 
-class SyncParsedAdverts
+class SyncParsedAdverts implements ShouldQueue
 {
-    use Dispatchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var \App\Models\Subscription

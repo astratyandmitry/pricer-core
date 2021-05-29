@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscription;
-use App\Jobs\InitialParseResultsPage;
+use App\Jobs\ParseSubscription;
 use Illuminate\Http\RedirectResponse;
 
 class SubscriptionSyncController extends Controller
@@ -14,7 +14,7 @@ class SubscriptionSyncController extends Controller
      */
     public function __invoke(Subscription $subscription): RedirectResponse
     {
-        InitialParseResultsPage::dispatch($subscription);
+        ParseSubscription::dispatch($subscription);
 
         return redirect()->route('subscription.detail', $subscription)->with('sync', true);
     }

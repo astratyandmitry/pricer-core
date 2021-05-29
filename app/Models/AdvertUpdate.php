@@ -30,4 +30,12 @@ class AdvertUpdate extends Model
     {
         return $this->belongsTo(Advert::class)->latest();
     }
+
+    /**
+     * @return bool
+     */
+    public function createdLessThan15MinutesAgo(): bool
+    {
+        return $this->created_at->isAfter(now()->subMinutes(15));
+    }
 }

@@ -14,7 +14,7 @@ class SubscriptionSeeder extends Seeder
         [
             'marketplace_key' => 'kolesa',
             'title' => 'Toyota Camry 40 в Алматы',
-            'url' => 'https://kolesa.kz/cars/avtomobili-s-probegom/toyota/camry/almaty/?_sys-hasphoto=2&auto-custom=2&year[from]=2006&year[to]=2013&price[from]=2000000&auto-car-order=1&auto-car-transm=2345&sort_by=price-asc',
+            'url' => 'https://kolesa.kz/cars/avtomobili-s-probegom/toyota/camry/almaty/?_sys-hasphoto=2&auto-custom=2&year[from]=2006&year[to]=2013&price[from]=2000000&auto-car-order=1&auto-car-transm=2345',
         ],
         [
             'marketplace_key' => 'olx',

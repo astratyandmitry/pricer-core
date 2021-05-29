@@ -3,11 +3,15 @@
 namespace App\Jobs;
 
 use App\Models\Advert;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 
-class LogAdvertUpdate
+class LogAdvertUpdate implements ShouldQueue
 {
-    use Dispatchable;
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * @var \App\Models\Advert
@@ -38,12 +42,12 @@ class LogAdvertUpdate
         $diff = 0;
 
         if ($currentState = $this->advert->latest_update) {
-            if ($this->advert->latest_update->created_at->isAfter(now()->subMinutes(15))) {
+            if (optional($this->advert->latest_update)->createdLessThan15MinutesAgo()) {
                 return;
             }
 
             $prev = $currentState->price;
-            $diff = (1 - $prev / $this->price) * 100;
+            $diff = diff_percentage($prev, $this->price);
         }
 
         if ($currentState && ! $diff) {
