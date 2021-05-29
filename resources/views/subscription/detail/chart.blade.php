@@ -1,7 +1,7 @@
 @php /** @var \App\Models\Subscription $subscription */ @endphp
 
 @if ($subscription->updates->count() > 1)
-  <div class="p-6 bg-white shadow-md rounded-md mt-12">
+  <div class="p-3 md:p-6 bg-white shadow-md rounded-md mt-6 md:mt-12">
     <canvas id="myChart" width="100%" height="30vh"></canvas>
   </div>
 

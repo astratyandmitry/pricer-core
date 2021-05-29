@@ -1,7 +1,7 @@
 @php /** @var \App\Models\Subscription $subscription */ @endphp
 
 @if ($subscription->latest_update)
-  <div class="grid grid-cols-4 space-x-6">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
     <x-stat-count
       label="объявлений"
       value="{{ $subscription->latest_update->adverts }}"

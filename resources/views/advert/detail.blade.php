@@ -4,20 +4,18 @@
 
 @section('content')
   <div id="heading" class="flex items-center justify-between mb-12">
-    <div class="flex items-center">
-      <img src="{{ $advert->image }}" class="rounded-md shadow-md object-cover h-40 w-64 mr-12" alt="">
+    <div class="md:flex items-center">
+      <img src="{{ $advert->image }}" class="rounded-md shadow-md object-cover h-56 lg:h-40 w-full lg:w-64 mr-12" alt="">
 
-      <div>
-        <div class="text-3xl font-medium flex items-center">
+      <div class="mt-3 md:mt-0">
+        <div class="text-xl lg:text-3xl font-medium md:flex items-center leading-none">
           <div>
             {{ $advert->title }}
           </div>
 
-          <a href="{{ $advert->url }}" target="_blank" class="text-blue-600 hover:text-blue-700">
-            <svg class="h-8 w-8 cursor-pointer ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-            </svg>
+          <a href="{{ $advert->url }}" target="_blank" class="text-blue-600 hover:text-blue-700 leading-none">
+            <span class="text-xs block md:hidden mt-1">Открыть страницу на {{ $advert->marketplace->title }}</span>
+            <x-svg.external-link class="hidden md:block h-8 w-8 ml-2"/>
           </a>
         </div>
       </div>
@@ -32,7 +30,7 @@
 
   @if($advert->updates->isNotEmpty())
     <div id="items">
-      <div class="text-2xl font-medium flex items-center">
+      <div class="text-lg lg:text-2xl font-medium flex items-center">
         <div>
           Последние 100 обновлений
         </div>

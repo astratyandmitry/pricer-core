@@ -11,7 +11,7 @@
 
 @include('layout._header')
 
-<div class="container mx-auto py-12">
+<div class="container mx-auto py-4 md:py-8 lg:py-12 px-2">
   @yield('content')
 </div>
 

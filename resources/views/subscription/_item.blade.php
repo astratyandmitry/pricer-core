@@ -1,9 +1,9 @@
 @php /** @var \App\Models\Subscription $subscription */ @endphp
 
 <div class="bg-white shadow-md rounded-md">
-  <div class="flex items-center justify-between p-6">
-    <div class="flex items-center">
-      <h3 class="text-lg flex items-center">
+  <div class="md:flex items-center justify-between p-3 md:p-6">
+    <div class="flex items-center justify-between">
+      <h3 class="lg:text-lg flex items-center">
         <a href="{{ route('subscription.detail', $subscription) }}" class="text-blue-600 hover:text-blue-700">
           {{ $subscription->title }}
         </a>
@@ -15,13 +15,13 @@
     </div>
 
     @if ($subscription->latest_update)
-      <div class="text-sm text-gray-400">
+      <div class="text-xs md:text-sm text-gray-400">
         {{ $subscription->latest_update->created_at->diffForHumans() }}
       </div>
     @endif
   </div>
 
-  <div class="p-6 border-t border-gray-100">
+  <div class="p-3 md:p-6 border-t border-gray-100">
     @include('subscription._stats')
   </div>
 </div>

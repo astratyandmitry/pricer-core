@@ -1,15 +1,15 @@
 @php /** @var \App\Models\Subscription $subscription */ @endphp
 
 @if($subscription->adverts->isNotEmpty())
-  <div id="items" class="mt-12">
-    <div class="text-2xl font-medium flex items-center">
+  <div id="items" class="mt-6 md:mt-12">
+    <div class="text-lg lg:text-2xl font-medium flex items-center">
       <div>
         Объявления на {{ $subscription->marketplace->title }} ({{ $subscription->adverts->count() }})
       </div>
     </div>
 
     <table border="0" cellpadding="0" cellspacing="0"
-           class="w-full mt-6 bg-white shadow-md rounded-md p-6 overflow-hidden">
+           class="w-full mt-3 md:mt-6 bg-white shadow-md rounded-md p-6 overflow-hidden">
       <tr class="bg-gray-500">
         <th class="text-left font-medium text-xs uppercase text-white p-4" colspan="2">
           Объявление
