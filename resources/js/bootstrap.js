@@ -1,3 +1,5 @@
+import tableSort from "table-sort-js/table-sort.js";
+
 window._ = require('lodash');
 
 /**

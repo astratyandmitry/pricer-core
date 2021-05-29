@@ -37,7 +37,7 @@ class ParseCommand extends Command
 
         foreach ($subscriptions as $subscription) {
             if (optional($subscription->latest_update)->createdLessThan15MinutesAgo()) {
-                $this->error('Subscription has been parsed less than 15 minutes ago');
+                $this->error("Subscription #{$subscription->id} has been parsed less than 15 minutes ago");
 
                 continue;
             }
