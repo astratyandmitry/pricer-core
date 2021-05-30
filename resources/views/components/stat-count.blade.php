@@ -11,7 +11,7 @@
     @isset($diff)
       @if ($diff > 0)
         <div class="flex items-center text-green-500">
-          <svg class="m-3 md:h-4 w-3 md:w-4 ml-1 md:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg class="h-3 md:h-4 w-3 md:w-4 ml-1 md:ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4"/>
           </svg>
 

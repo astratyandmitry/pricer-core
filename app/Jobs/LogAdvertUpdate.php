@@ -55,6 +55,7 @@ class LogAdvertUpdate implements ShouldQueue
         }
 
         $this->advert->updates()->create([
+            'new' => $currentState === null,
             'price' => $this->price,
             'price_prev' => $prev,
             'price_diff' => $diff,
