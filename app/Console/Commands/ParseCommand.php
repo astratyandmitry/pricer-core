@@ -13,42 +13,57 @@ class ParseCommand extends Command
     /**
      * @var string
      */
-    protected $signature = 'pricer:parse {marketplace}';
+    protected $signature = 'pricer:parse {marketplace?}';
 
     /**
      * @return int
      */
     public function handle(): int
     {
-        $marketplace = $this->argument('marketplace');
+        if ($selectedMarketplace = $this->argument('marketplace')) {
+            /** @var \App\Models\Marketplace $marketplace */
+            if ($marketplace = Marketplace::query()->where('key', $selectedMarketplace)->first()) {
+                $this->parseSubscription($marketplace);
+            } else {
+                $this->error('Marketplace not found');
 
-        if (! Marketplace::query()->where('key', $marketplace)->exists()) {
-            $this->error('Marketplace not found');
+                return 0;
+            }
+        } else {
+            /** @var \App\Models\Marketplace[] $marketplaces */
+            $marketplaces = Marketplace::query()->get();
 
-            return 0;
+            foreach ($marketplaces as $marketplace) {
+                $this->parseSubscription($marketplace);
+            }
         }
 
-        /** @var \App\Models\Subscription[]|\Illuminate\Database\Eloquent\Collection $subscriptions */
-        $subscriptions = Subscription::query()->where('marketplace_key', $marketplace)->get();
+        return 1;
+    }
 
-        if ($subscriptions->isEmpty()) {
-            $this->error("No available subscription found for «{$marketplace}»");
+    /**
+     * @param \App\Models\Marketplace $marketplace
+     */
+    private function parseSubscription(Marketplace $marketplace): void
+    {
+        $this->info("Working with «{$marketplace->key}» Marketplace");
+
+        if ($marketplace->subscriptions->isEmpty()) {
+            $this->warn("— No available subscriptions found");
         }
 
-        foreach ($subscriptions as $subscription) {
+        foreach ($marketplace->subscriptions as $subscription) {
             if (optional($subscription->latest_update)->createdLessThan15MinutesAgo()) {
-                $this->error("Subscription #{$subscription->id} has been parsed less than 15 minutes ago");
+                $this->warn("— [{$subscription->id}] Subscription was parsed less than 15 minutes ago");
 
                 continue;
             }
 
-            $this->info("Parsing Subscription #{$subscription->id}");
+            $this->info("— [{$subscription->id}] Parsing subscription");
 
             ParseSubscription::dispatchNow($subscription);
 
             LogSubscriptionUpdate::dispatchNow($subscription);
         }
-
-        return 1;
     }
 }
