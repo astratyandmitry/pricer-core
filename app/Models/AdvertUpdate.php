@@ -18,6 +18,11 @@ class AdvertUpdate extends Model
     /**
      * @var array
      */
+    protected $touches = ['advert'];
+
+    /**
+     * @var array
+     */
     protected $casts = [
         'price' => 'double',
         'price_prev' => 'double',

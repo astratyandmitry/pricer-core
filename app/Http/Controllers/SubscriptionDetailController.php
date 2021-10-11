@@ -15,9 +15,9 @@ class SubscriptionDetailController extends Controller
     {
         abort_if($subscription->trashed(), 403);
 
-        $subscription->load('updates', 'adverts', 'adverts.latest_update', 'latest_update');
+        $subscription->load('updates', 'latest_update');
 
-        $adverts = $subscription->adverts->sortByDesc('latest_update.created_at');
+        $adverts = $subscription->adverts()->with('latest_update')->latest('updated_at')->paginate(50);
 
         return view('subscription.detail', [
             'subscription' => $subscription,

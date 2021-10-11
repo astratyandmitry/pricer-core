@@ -26,6 +26,11 @@ class SubscriptionUpdate extends Model
     /**
      * @var array
      */
+    protected $touches = ['subscription'];
+
+    /**
+     * @var array
+     */
     protected $casts = [
         'adverts' => 'integer',
         'adverts_prev' => 'integer',

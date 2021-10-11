@@ -60,16 +60,22 @@
           </td>
           <td class="p-4 text-right">
             @if ($advert->latest_update->price_diff < 0)
-              <div class="text-green-500 font-medium">
+              <div class="text-green-500 font-medium leading-none">
                 {{ $advert->latest_update->price_diff }}%
               </div>
+              <div class="text-xs text-green-500 inline-block leading-none mt-2">
+                -{{ price($advert->latest_update->price_prev) }}
+              </div>
             @elseif ($advert->latest_update->price_diff > 0)
-              <div class="text-red-500 font-medium">
+              <div class="text-red-500 font-medium leading-none">
                 {{ $advert->latest_update->price_diff }}%
+              </div>
+              <div class="text-xs text-red-500 inline-block leading-none mt-2">
+                {{ price($advert->latest_update->price_prev) }}
               </div>
             @else
               <div class="text-gray-400 font-medium">
-                0%
+
               </div>
             @endif
           </td>
@@ -95,5 +101,9 @@
       @endforeach
       </tbody>
     </table>
+
+    <div class="mt-8 w-full">
+      {{ $adverts->links('vendor.pagination.tailwind') }}
+    </div>
   </div>
 @endif

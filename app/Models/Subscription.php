@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -36,7 +37,11 @@ class Subscription extends Model
     public function adverts(): HasManyThrough
     {
         return $this->hasManyThrough(Advert::class, AdvertToSubscription::class, 'subscription_id', 'id', 'id', 'advert_id')
-            ->whereHas('latest_update');
+            ->whereHas('latest_update', function (Builder $builder): Builder {
+                //return $builder->where('new', true)->orWhere('price_diff', '!=', '0.0');
+
+                return $builder;
+            });
     }
 
     /**
