@@ -136,7 +136,7 @@ class Crawler
         }
 
         /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domPaginationLastChild */
-        $domPaginationLastChild = $domPagination[count($domPagination) - 1];
+        $domPaginationLastChild = $domPagination[count($domPagination) - 2];
 
         return (int) $domPaginationLastChild->innerText;
     }

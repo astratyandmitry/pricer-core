@@ -11,10 +11,11 @@ class MarketplaceSeeder extends Seeder
      * @var array
      */
     protected $data = [
+
         [
-            'key' => 'olx',
-            'title' => 'OLX',
-            'proxy' => false,
+            'key' => 'krisha',
+            'title' => 'Крыша',
+            'proxy' => true,
         ],
         [
             'key' => 'kolesa',
@@ -25,6 +26,11 @@ class MarketplaceSeeder extends Seeder
             'key' => 'market',
             'title' => 'Маркет',
             'proxy' => true,
+        ],
+        [
+            'key' => 'olx',
+            'title' => 'OLX',
+            'proxy' => false,
         ],
     ];
 

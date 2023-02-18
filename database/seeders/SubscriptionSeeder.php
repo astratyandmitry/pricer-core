@@ -13,34 +13,9 @@ class SubscriptionSeeder extends Seeder
      */
     protected $data = [
         [
-            'marketplace_key' => 'olx',
-            'title' => 'iPhone XR в Алматы',
-            'url' => 'https://www.olx.kz/elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony/apple/alma-ata/q-iphone-xr/?search%5Bfilter_enum_state%5D%5B0%5D=used',
-        ],
-        [
-            'marketplace_key' => 'olx',
-            'title' => 'iPhone 12 Pro в Алматы',
-            'url' => 'https://www.olx.kz/elektronika/telefony-i-aksesuary/mobilnye-telefony-smartfony/apple/alma-ata/q-iphone-12-pro/?search%5Bfilter_enum_state%5D%5B0%5D=used',
-        ],
-        [
-            'marketplace_key' => 'market',
-            'title' => 'iPhone XR в Алматы',
-            'url' => 'https://market.kz/almaty/k--iphone-xr/?listingType=suggest_enter',
-        ],
-        [
-            'marketplace_key' => 'market',
-            'title' => 'iPhone 12 Pro в Алматы',
-            'url' => 'https://market.kz/elektronika/telefony/mobilnye-telefony/k--iphone-12-pro/?listingType=suggest_cat',
-        ],
-        [
-            'marketplace_key' => 'kolesa',
-            'title' => 'Honda Accord 1994-97 в Алматы',
-            'url' => 'https://kolesa.kz/cars/honda/accord/almaty/?_sys-hasphoto=2&auto-custom=2&auto-car-transm=2345&year[from]=1994&year[to]=1999',
-        ],
-        [
-            'marketplace_key' => 'kolesa',
-            'title' => 'Lexus IS 2005-08 в Алматы',
-            'url' => 'https://kolesa.kz/cars/lexus/serii-is-vse/almaty/?_sys-hasphoto=2&auto-custom=2&auto-car-transm=2345&year[from]=2005&year[to]=2008',
+            'marketplace_key' => 'krisha',
+            'title' => 'Квартира мечты',
+            'url' => 'https://krisha.kz/arenda/kvartiry/almaty/?das[_sys.hasphoto]=1&das[live.furniture][]=1&das[live.furniture][]=2&das[live.rooms][]=2&das[live.rooms][]=3&das[live.rooms][]=4&das[price][from]=250000&das[price][to]=350000',
         ],
     ];
 
