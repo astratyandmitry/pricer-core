@@ -17,7 +17,7 @@ class SubscriptionDetailController extends Controller
 
         $subscription->load('updates', 'latest_update');
 
-        $adverts = $subscription->adverts()->with('latest_update')->latest('updated_at')->paginate(50);
+        $adverts = $subscription->adverts()->with('latest_update')->latest('updated_at')->paginate(100);
 
         return view('subscription.detail', [
             'subscription' => $subscription,

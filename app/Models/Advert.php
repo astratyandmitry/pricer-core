@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property string $marketplace_key
  * @property string $title
+ * @property string|null $about
  * @property string|null $url
  * @property string $image
  *
@@ -18,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Advert extends Model
 {
+    use SoftDeletes;
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

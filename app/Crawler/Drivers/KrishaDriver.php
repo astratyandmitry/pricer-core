@@ -29,6 +29,14 @@ class KrishaDriver implements Driver
     }
 
     /**
+     * @return string|null
+     */
+    public function domSelectorAdvertDescription(): ?string
+    {
+        return '.a-card__subtitle';
+    }
+
+    /**
      * @return string
      */
     public function domSelectorAdvertImage(): string

@@ -49,7 +49,6 @@ class ParseSubscription implements ShouldQueue
 
         $pagesCount = $crawler->pages();
 
-
         if ($this->pageNumber === null && $pagesCount > 1) {
             for ($pageNumber = 2; $pageNumber <= $pagesCount; $pageNumber++) {
                 ParseSubscription::dispatchNow($this->subscription, $pageNumber);

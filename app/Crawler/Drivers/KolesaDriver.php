@@ -52,4 +52,12 @@ class KolesaDriver implements Driver
     {
         return '.pager li';
     }
+
+    /**
+     * @return string|null
+     */
+    public function domSelectorAdvertDescription(): ?string
+    {
+        return null;
+    }
 }

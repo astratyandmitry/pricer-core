@@ -52,4 +52,12 @@ class OlxDriver implements Driver
     {
         return '.pager .item';
     }
+
+    /**
+     * @return string|null
+     */
+    public function domSelectorAdvertDescription(): ?string
+    {
+        return null;
+    }
 }

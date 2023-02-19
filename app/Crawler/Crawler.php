@@ -91,6 +91,8 @@ class Crawler
 
         /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOffer */
         foreach ($domOffers as $domOffer) {
+
+
             /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOfferLink */
             $domOfferLink = $domOffer->find($this->driver->domSelectorAdvertLink())[0];
 
@@ -108,10 +110,14 @@ class Crawler
             /** @var \PHPHtmlParser\Dom\Node\HtmlNode $domOfferImage */
             $domOfferImage = $domOffer->find($this->driver->domSelectorAdvertImage())[0];
 
+            $domOfferDescription = $this->driver->domSelectorAdvertDescription() ?
+                $domOffer->find($this->driver->domSelectorAdvertDescription())[0] : null;
+
             $adverts->push([
                 'url' => $this->driver->buildAdvertUrl($domOfferLink->getAttribute('href')),
                 'image' => $domOfferImage ? $domOfferImage->getAttribute('src') : null,
                 'title' => $domOfferLink->innerText,
+                'description' => $domOfferDescription ? $domOfferDescription->innerText : null,
                 'price' => $price,
             ]);
         }

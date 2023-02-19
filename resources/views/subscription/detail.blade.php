@@ -37,5 +37,5 @@
 
   @include('subscription.detail.chart')
 
-  @include('subscription.detail.adverts')
+  @include('subscription.detail.adverts-grid')
 @endsection

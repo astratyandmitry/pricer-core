@@ -20,6 +20,11 @@ interface Driver
     public function domSelectorAdvertPrice(): string;
 
     /**
+     * @return string|null
+     */
+    public function domSelectorAdvertDescription(): ?string;
+
+    /**
      * @return string
      */
     public function domSelectorAdvertImage(): string;

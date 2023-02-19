@@ -52,4 +52,12 @@ class MarketDriver implements Driver
     {
         return '.pagination li';
     }
+
+    /**
+     * @return string|null
+     */
+    public function domSelectorAdvertDescription(): ?string
+    {
+        return null;
+    }
 }

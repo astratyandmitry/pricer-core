@@ -47,10 +47,12 @@ class SyncParsedAdverts implements ShouldQueue
 
         foreach ($this->adverts as $data) {
             if ($advert = $this->getAdvertByUrl($data['url'])) {
-                $advert->update([
-                    'title' => $data['title'],
-                    'image' => $data['image'],
-                ]);
+                if (! $advert->trashed()) {
+                    $advert->update([
+                        'title' => $data['title'],
+                        'image' => $data['image'],
+                    ]);
+                }
             } else {
                 $advert = $this->storeAdvert($data);
             }
@@ -70,7 +72,7 @@ class SyncParsedAdverts implements ShouldQueue
         return Advert::query()->where([
             'marketplace_key' => $this->subscription->marketplace_key,
             'url' => $url,
-        ])->first();
+        ])->withTrashed()->first();
     }
 
     /**
@@ -82,6 +84,7 @@ class SyncParsedAdverts implements ShouldQueue
         return Advert::query()->create([
             'marketplace_key' => $this->subscription->marketplace_key,
             'title' => $data['title'],
+            'description' => $data['description'],
             'url' => $data['url'],
             'image' => $data['image'],
         ]);

@@ -11,3 +11,4 @@ Route::post('/subscriptions', \App\Http\Controllers\SubscriptionStoreController:
 Route::get('/subscription/{subscription}', \App\Http\Controllers\SubscriptionDetailController::class)->name('subscription.detail');
 Route::get('/subscription/{subscription}/sync', \App\Http\Controllers\SubscriptionSyncController::class)->name('subscription.sync');
 Route::get('/advert/{advert}', \App\Http\Controllers\AdvertDetailController::class)->name('advert.detail');
+Route::delete('/advert/{advert}/delete', \App\Http\Controllers\AdvertDeleteController::class)->name('advert.delete');
